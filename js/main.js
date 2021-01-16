@@ -1,19 +1,22 @@
-function userProgress(time) {
-    var start = 0;
-    var time = Math.round(time * 1000 / 100);
-    var progressElement = document.getElementById('user-progress');
-    var intervalId = setInterval(function() {
+const progressElement = document.getElementById('user-progress');
+const progressElement2 = document.getElementById('user-progress2');
+const hiddenBlockOne = document.querySelector('.hidden-block');
+const hiddenBlockTwo = document.querySelector('.hidden-block2');
+
+function onProgress(time, progress, hiddenElement) {
+    let start = 0;
+    let interval = Math.round(time * 1000 / 100);
+    let intervalId = setInterval(function() {
         if(start > 100) {
             clearInterval(intervalId);
-            userProgressCallBack();
+            hiddenElement.style.display = 'block';
         } else {
-            progressElement.value = start;
+            progress.value = start;
         }
         start++;
-    }, time);
+    }, interval);
 }
-userProgress(3);
 
-function userProgressCallBack() {
-    document.querySelector('.hidden-block').style.display = 'block';
-}
+onProgress(3, progressElement, hiddenBlockOne);
+
+onProgress(5, progressElement2, hiddenBlockTwo);

@@ -20,6 +20,7 @@ body {
     margin-bottom: 10px;
 }
 
-.hidden-block {
+.hidden-block,
+.hidden-block2 {
     display: none;
 }
